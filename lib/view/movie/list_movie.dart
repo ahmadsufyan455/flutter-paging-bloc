@@ -11,7 +11,7 @@ class ListMovie extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('The Movie DB'),
+        title: const Text('The Movie - Now Playing'),
         centerTitle: true,
       ),
       body: BlocProvider(
@@ -39,8 +39,18 @@ class ListMovie extends StatelessWidget {
                   itemBuilder: (context, index) {
                     if (index < state.movies.length) {
                       return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ItemMovie(movie: state.movies[index]),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0,
+                          vertical: 4.0,
+                        ),
+                        child: InkWell(
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            '/detail',
+                            arguments: state.movies[index].id,
+                          ),
+                          child: ItemMovie(movie: state.movies[index]),
+                        ),
                       );
                     } else {
                       // Show a loading indicator at the end of the list while loading more movies

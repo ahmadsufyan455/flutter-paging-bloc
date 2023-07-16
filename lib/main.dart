@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_movie_db/view/movie/detail/detail_movie_screen.dart';
 import 'package:the_movie_db/view/movie/list_movie.dart';
 
 void main() {
@@ -13,7 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
-      home: const ListMovie(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const ListMovie(),
+        '/detail': (context) => const DetailMovieScreen()
+      },
     );
   }
 }
